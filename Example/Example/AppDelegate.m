@@ -7,12 +7,17 @@
 //
 
 #import "AppDelegate.h"
+#import "KBSElementRef.h"
 
 @implementation AppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    // Insert code here to initialize your application
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(test) userInfo:nil repeats:true];
+}
+
+- (void)test {
+    KBSElementRef *app = [KBSElementRef focusedApplicationRef];
+    [app performSelectAll];
 }
 
 @end

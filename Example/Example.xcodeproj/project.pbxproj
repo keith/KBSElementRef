@@ -13,6 +13,7 @@
 		C241972F178DF31B005F2E9B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C241972D178DF31B005F2E9B /* Credits.rtf */; };
 		C2419732178DF31B005F2E9B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2419731178DF31B005F2E9B /* AppDelegate.m */; };
 		C2419735178DF31B005F2E9B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2419733178DF31B005F2E9B /* MainMenu.xib */; };
+		C241973D178DF36C005F2E9B /* KBSElementRef.m in Sources */ = {isa = PBXBuildFile; fileRef = C241973C178DF36C005F2E9B /* KBSElementRef.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		C2419730178DF31B005F2E9B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C2419731178DF31B005F2E9B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C2419734178DF31B005F2E9B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C241973B178DF36C005F2E9B /* KBSElementRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KBSElementRef.h; path = ../KBSElementRef.h; sourceTree = "<group>"; };
+		C241973C178DF36C005F2E9B /* KBSElementRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KBSElementRef.m; path = ../KBSElementRef.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +49,8 @@
 		C2419712178DF31B005F2E9B = {
 			isa = PBXGroup;
 			children = (
+				C241973B178DF36C005F2E9B /* KBSElementRef.h */,
+				C241973C178DF36C005F2E9B /* KBSElementRef.m */,
 				C2419724178DF31B005F2E9B /* Example */,
 				C241971D178DF31B005F2E9B /* Frameworks */,
 				C241971C178DF31B005F2E9B /* Products */,
@@ -168,6 +173,7 @@
 			files = (
 				C241972B178DF31B005F2E9B /* main.m in Sources */,
 				C2419732178DF31B005F2E9B /* AppDelegate.m in Sources */,
+				C241973D178DF36C005F2E9B /* KBSElementRef.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
