@@ -14,6 +14,7 @@
 		C2419732178DF31B005F2E9B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2419731178DF31B005F2E9B /* AppDelegate.m */; };
 		C2419735178DF31B005F2E9B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2419733178DF31B005F2E9B /* MainMenu.xib */; };
 		C241973D178DF36C005F2E9B /* KBSElementRef.m in Sources */ = {isa = PBXBuildFile; fileRef = C241973C178DF36C005F2E9B /* KBSElementRef.m */; };
+		C2419740178DF5F6005F2E9B /* NSPasteboard+Save.m in Sources */ = {isa = PBXBuildFile; fileRef = C241973F178DF5F6005F2E9B /* NSPasteboard+Save.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		C2419734178DF31B005F2E9B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		C241973B178DF36C005F2E9B /* KBSElementRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KBSElementRef.h; path = ../KBSElementRef.h; sourceTree = "<group>"; };
 		C241973C178DF36C005F2E9B /* KBSElementRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KBSElementRef.m; path = ../KBSElementRef.m; sourceTree = "<group>"; };
+		C241973E178DF5F6005F2E9B /* NSPasteboard+Save.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSPasteboard+Save.h"; path = "../NSPasteboard+Save.h"; sourceTree = "<group>"; };
+		C241973F178DF5F6005F2E9B /* NSPasteboard+Save.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSPasteboard+Save.m"; path = "../NSPasteboard+Save.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +54,8 @@
 			children = (
 				C241973B178DF36C005F2E9B /* KBSElementRef.h */,
 				C241973C178DF36C005F2E9B /* KBSElementRef.m */,
+				C241973E178DF5F6005F2E9B /* NSPasteboard+Save.h */,
+				C241973F178DF5F6005F2E9B /* NSPasteboard+Save.m */,
 				C2419724178DF31B005F2E9B /* Example */,
 				C241971D178DF31B005F2E9B /* Frameworks */,
 				C241971C178DF31B005F2E9B /* Products */,
@@ -174,6 +179,7 @@
 				C241972B178DF31B005F2E9B /* main.m in Sources */,
 				C2419732178DF31B005F2E9B /* AppDelegate.m in Sources */,
 				C241973D178DF36C005F2E9B /* KBSElementRef.m in Sources */,
+				C2419740178DF5F6005F2E9B /* NSPasteboard+Save.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +315,7 @@
 				C241973A178DF31B005F2E9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
