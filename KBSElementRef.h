@@ -15,6 +15,8 @@
 + (instancetype)focusedApplicationRef;
 
 - (id)initWithElementRef:(AXUIElementRef)ref;
+
 - (BOOL)performSelectAll;
+- (NSString *)performCopyWithItemNamed:(NSString *)name;
 
 @end

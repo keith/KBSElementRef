@@ -6,6 +6,7 @@
 //
 
 #import "KBSElementRef.h"
+#import "NSPasteboard+Save.h"
 
 @implementation KBSElementRef
 
@@ -165,6 +166,42 @@
     }
     
     return false;
+}
+
+- (NSString *)performCopyWithItemNamed:(NSString *)name {
+    if (!name) {
+        name = @"Copy";
+    }
+    
+    KBSElementRef *copyItem = [self menuItemWithName:name];
+    if ([copyItem enabled]) {
+        NSPasteboard *pb = [NSPasteboard generalPasteboard];
+        NSDictionary *pbContents = [pb saveContents];
+        
+        AXError error = 0;
+        error = AXUIElementPerformAction(copyItem.elementRef, kAXPressAction);
+        if (error != kAXErrorSuccess) {
+            NSLog(@"Error copying: %d", error);
+            if (pbContents) {
+                [pb restoreContents:pbContents];
+            }
+            
+            return @"";
+        }
+        
+        NSString *text = [pb stringForType:NSPasteboardTypeString];
+        NSLog(@"T: %@", text);
+        if (!text) {
+            text = [pb stringForType:NSPasteboardTypeHTML];
+            NSLog(@"Text was nil, got %@", text);
+        }
+        
+        return text;
+    } else {
+        NSLog(@"Copy item not enabled");
+    }
+    
+    return @"";
 }
 
 @end
