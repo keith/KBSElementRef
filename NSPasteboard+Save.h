@@ -7,7 +7,9 @@
 
 @interface NSPasteboard (Save)
 
-- (NSDictionary *)saveContents;
-- (void)restoreContents:(NSDictionary *)dict;
+//- (NSDictionary *)saveContents;
+//- (void)restoreContents:(NSDictionary *)dict;
+- (NSArray *)saveContents;
+- (void)restoreContents:(NSArray *)arr;
 
 @end

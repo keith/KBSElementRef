@@ -65,6 +65,10 @@
     return [self valueForAttribute:kAXParentAttribute];
 }
 
+- (KBSElementRef *)focusedElement {
+    return [self valueForAttribute:kAXFocusedUIElementAttribute];
+}
+
 - (NSString *)title {
     return [self valueForAttribute:kAXTitleAttribute];
 }
@@ -90,7 +94,10 @@
     CFTypeRef theValue = nil;
     AXError error = AXUIElementCopyAttributeValue(self.elementRef, attribute, &theValue);
     if (error != kAXErrorSuccess) {
-        NSLog(@"Value error for %@ code %d", attribute, error);
+        if ([[self role] isEqualToString:(NSString *)kAXMenuRole] && [(__bridge NSString *)attribute isEqualToString:(NSString *)kAXTitleAttribute]) {
+            return nil;
+        }
+        NSLog(@"Value error for %@ code %d role: %@", attribute, error, [self role]);
         return nil;
     }
 
@@ -117,10 +124,6 @@
 }
 
 - (BOOL)isTextField {
-    if (![self isFocused]) {
-        return false;
-    }
-    
     NSString *role = [self role];
     if ([role isEqualToString:(NSString *)kAXTextAreaRole] || [role isEqualToString:(NSString *)kAXTextFieldRole]) {
         return true;
@@ -174,14 +177,18 @@
     }
     
     KBSElementRef *copyItem = [self menuItemWithName:name];
-    if ([copyItem enabled]) {
+    if (copyItem) {
         NSPasteboard *pb = [NSPasteboard generalPasteboard];
-        NSDictionary *pbContents = [pb saveContents];
-        
-        AXError error = 0;
-        error = AXUIElementPerformAction(copyItem.elementRef, kAXPressAction);
-        if (error != kAXErrorSuccess) {
-            NSLog(@"Error copying: %d", error);
+        NSArray *pbContents = [pb saveContents];
+        pbContents = nil;
+
+        NSInteger change = [pb changeCount];
+        if (AXUIElementPerformAction(copyItem.elementRef, kAXPressAction) == kAXErrorSuccess) {
+            while ([pb changeCount] == change) {
+                usleep(10000);
+            }
+        } else {
+            NSLog(@"Error copying");
             if (pbContents) {
                 [pb restoreContents:pbContents];
             }
@@ -190,10 +197,14 @@
         }
         
         NSString *text = [pb stringForType:NSPasteboardTypeString];
-        NSLog(@"T: %@", text);
+//        NSLog(@"T: %@", text);
         if (!text) {
             text = [pb stringForType:NSPasteboardTypeHTML];
             NSLog(@"Text was nil, got %@", text);
+        }
+        
+        if (pbContents) {
+            [pb restoreContents:pbContents];
         }
         
         return text;
