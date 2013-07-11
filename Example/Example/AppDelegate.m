@@ -18,9 +18,14 @@
 - (void)test {
     KBSElementRef *app = [KBSElementRef focusedApplicationRef];
     [app performSelectAll];
-    sleep(1);
-    NSString *text = [app performCopyWithItemNamed:@"HTML"];
-    NSLog(@"abc %@", text);
+    //    sleep(1);
+    NSString *text = [app performCopyWithItemNamed:nil];
+    if (text && text.length > 0) {
+        NSLog(@"Y");
+    } else {
+        NSLog(@"NO");
+    }
+    //    NSLog(@"abc %@", text);
 }
 
 @end
