@@ -171,6 +171,22 @@
     return false;
 }
 
+- (BOOL)performDeselect {
+    KBSElementRef *focusedElement = [self focusedElement];
+    if (focusedElement) {
+        AXError error = 0;
+        error = AXUIElementPerformAction(focusedElement.elementRef, kAXPressAction);
+        if (error != kAXErrorSuccess) {
+            NSLog(@"Failed to click focused element");
+            return false;
+        } else {
+            NSLog(@"Success");
+        }
+    }
+    
+    return true;
+}
+
 - (NSString *)performCopyWithItemNamed:(NSString *)name {
     if (!name) {
         name = @"Copy";
