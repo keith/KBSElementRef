@@ -12,7 +12,8 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(test) userInfo:nil repeats:true];
+//    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(test) userInfo:nil repeats:true];
+    [self test];
 }
 
 - (void)test {
@@ -20,7 +21,8 @@
     [app performSelectAll];
     //    sleep(1);
     NSString *text = [app performCopyWithItemNamed:nil];
-    if (text && text.length > 0) {
+    [app performDeselect];
+    if (text.length > 0) {
         NSLog(@"Y");
     } else {
         NSLog(@"NO");
