@@ -12,22 +12,18 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-//    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(test) userInfo:nil repeats:true];
-    [self test];
+    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(test) userInfo:nil repeats:false];
 }
 
 - (void)test {
     KBSElementRef *app = [KBSElementRef focusedApplicationRef];
     [app performSelectAll];
-    //    sleep(1);
     NSString *text = [app performCopyWithItemNamed:nil];
-    [app performDeselect];
     if (text.length > 0) {
-        NSLog(@"Y");
+        NSLog(@"Y: %@", text);
     } else {
-        NSLog(@"NO");
+        NSLog(@"NO text");
     }
-    //    NSLog(@"abc %@", text);
 }
 
 @end
