@@ -17,6 +17,7 @@
 - (id)initWithElementRef:(AXUIElementRef)ref;
 
 - (KBSElementRef *)focusedElement;
+- (NSString *)elementValue;
 - (BOOL)isTextField;
 
 - (BOOL)performSelectAll;

@@ -77,6 +77,10 @@
     return [self valueForAttribute:kAXRoleAttribute];
 }
 
+- (NSString *)elementValue {
+    return [self valueForAttribute:kAXValueAttribute];
+}
+
 - (NSArray *)children {
     return [self valueForAttribute:kAXChildrenAttribute];
 }
