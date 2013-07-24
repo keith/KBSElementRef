@@ -20,7 +20,6 @@
 - (BOOL)isTextField;
 
 - (BOOL)performSelectAll;
-- (BOOL)performDeselect;
 - (NSString *)performCopyWithItemNamed:(NSString *)name;
 
 @end

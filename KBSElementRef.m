@@ -171,22 +171,6 @@
     return false;
 }
 
-- (BOOL)performDeselect {
-    KBSElementRef *focusedElement = [self focusedElement];
-    if (focusedElement) {
-        AXError error = 0;
-        error = AXUIElementPerformAction(focusedElement.elementRef, kAXPressAction);
-        if (error != kAXErrorSuccess) {
-            NSLog(@"Failed to click focused element");
-            return false;
-        } else {
-            NSLog(@"Success");
-        }
-    }
-    
-    return true;
-}
-
 - (NSString *)performCopyWithItemNamed:(NSString *)name {
     if (!name) {
         name = @"Copy";
@@ -196,7 +180,6 @@
     if (copyItem) {
         NSPasteboard *pb = [NSPasteboard generalPasteboard];
         NSArray *pbContents = [pb saveContents];
-        pbContents = nil;
 
         NSInteger change = [pb changeCount];
         if (AXUIElementPerformAction(copyItem.elementRef, kAXPressAction) == kAXErrorSuccess) {
@@ -213,10 +196,8 @@
         }
         
         NSString *text = [pb stringForType:NSPasteboardTypeString];
-//        NSLog(@"T: %@", text);
         if (!text) {
             text = [pb stringForType:NSPasteboardTypeHTML];
-            NSLog(@"Text was nil, got %@", text);
         }
         
         if (pbContents) {
