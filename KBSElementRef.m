@@ -161,10 +161,10 @@
     if ([selectAllMenuItem enabled]) {
         AXError error = 0;
         error = AXUIElementPerformAction(selectAllMenuItem.elementRef, kAXPressAction);
-        if (error != kAXErrorSuccess) {
-            NSLog(@"Error pressing Select All: %d", error);
-        } else {
+        if (error == kAXErrorSuccess) {
             return true;
+        } else {
+            NSLog(@"Error pressing Select All: %d", error);
         }
     }
     
