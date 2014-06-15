@@ -30,7 +30,7 @@
 - (void)restoreContents:(NSArray *)array
 {
     [self clearContents];
-    [self writeObjects:arr];
+    [self writeObjects:array];
 }
 
 @end
