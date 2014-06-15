@@ -10,7 +10,8 @@
 
 @implementation NSPasteboard (Save)
 
-- (NSArray *)saveContents {
+- (NSArray *)saveContents
+{
     NSMutableArray *archive = [NSMutableArray array];
     for (NSPasteboardItem *item in [self pasteboardItems]) {
         NSPasteboardItem *archivedItem = [[NSPasteboardItem alloc] init];
@@ -22,11 +23,12 @@
         }
         [archive addObject:archivedItem];
     }
-    
+
     return archive;
 }
 
-- (void)restoreContents:(NSArray *)arr {
+- (void)restoreContents:(NSArray *)array
+{
     [self clearContents];
     [self writeObjects:arr];
 }
