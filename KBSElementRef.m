@@ -16,7 +16,7 @@
     dispatch_once(&onceToken, ^{
         systemWideRef = [[KBSElementRef alloc] initWithElementRef:AXUIElementCreateSystemWide()];
     });
-    
+
     return systemWideRef;
 }
 
@@ -29,9 +29,9 @@
     if (!self) {
         return nil;
     }
-    
+
     self.elementRef = CFRetain(ref);
-    
+
     return self;
 }
 
@@ -46,7 +46,7 @@
     while (ref && ![[ref role] isEqualToString:(NSString *)kAXApplicationRole]) {
         ref = [ref parent];
     }
-    
+
     return ref;
 }
 
@@ -117,12 +117,12 @@
             KBSElementRef *ref = [[KBSElementRef alloc] initWithElementRef:elementRef];
             [array addObject:ref];
         }
-        
+
         value = array;
     } else {
         value = [[(__bridge id)theValue description] copy];
     }
-    
+
     CFRelease(theValue);
     return value;
 }
@@ -132,7 +132,7 @@
     if ([role isEqualToString:(NSString *)kAXTextAreaRole] || [role isEqualToString:(NSString *)kAXTextFieldRole]) {
         return true;
     }
-    
+
     return false;
 }
 
@@ -171,7 +171,7 @@
             NSLog(@"Error pressing Select All: %d", error);
         }
     }
-    
+
     return false;
 }
 
@@ -179,7 +179,7 @@
     if (!name) {
         name = @"Copy";
     }
-    
+
     KBSElementRef *copyItem = [self menuItemWithName:name];
     if (copyItem) {
         NSPasteboard *pb = [NSPasteboard generalPasteboard];
@@ -195,24 +195,24 @@
             if (pbContents) {
                 [pb restoreContents:pbContents];
             }
-            
+
             return @"";
         }
-        
+
         NSString *text = [pb stringForType:NSPasteboardTypeString];
         if (!text) {
             text = [pb stringForType:NSPasteboardTypeHTML];
         }
-        
+
         if (pbContents) {
             [pb restoreContents:pbContents];
         }
-        
+
         return text;
     } else {
         NSLog(@"Copy item not enabled");
     }
-    
+
     return @"";
 }
 
